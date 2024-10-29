@@ -1,14 +1,13 @@
 import { Kanit } from 'next/font/google';
-// import { Nunito } from 'next/font/google';
 import "./globals.css";
 import NavBar from '@/components/NavBar';
 import BottomBar from '@/components/BottomBar';
+import MainContextWrapper from '@/ContextAPI/MainContext';
 
 const kanit = Kanit({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
-// const nunito = Nunito({ subsets: ['latin'] });
 
 export const metadata = {
   title: "Create Next App",
@@ -22,9 +21,11 @@ export default function RootLayout({ children }) {
         className={` ${kanit.className} antialiased bg-[#041316] `}
       >
         <div className="min-h-screen text-white">
-          <NavBar />
-          <main className="pt-4 pb-16 sm:pt-20 sm:pb-0">{children}</main>
-          <BottomBar />
+          <MainContextWrapper>
+            <NavBar />
+            <main className="pt-4 pb-16 px-6 sm:pt-20 sm:pb-0">{children}</main>
+            <BottomBar />
+          </MainContextWrapper>
         </div>
         {/* {children} */}
       </body>

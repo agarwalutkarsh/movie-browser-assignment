@@ -1,7 +1,7 @@
 import { FaHeart, FaFilter, FaClock } from 'react-icons/fa';
 
 const NavBar = () => (
-  <div className="hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
+  <div className="z-50 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
     {/* Logo / Title */}
     <div className="text-lg font-bold">Movie Browser</div>
 
