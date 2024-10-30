@@ -9,7 +9,7 @@ const Carousel = () => {
   const carouselRef = useRef(null);
 
   const mainContext = useContext(MainContext)
-  const [carouselNumber, setCarouselNumber ] = useState(1)
+  const [carouselNumber, setCarouselNumber] = useState(1)
 
   // Auto-scroll function
   useEffect(() => {
@@ -67,21 +67,28 @@ const Carousel = () => {
             className="relative flex-shrink-0 w-full snap-center h-full"
           >
             {/* Item Content */}
-            <Image src={imageUrlGenerator(item?.backdrop_path)} alt={item?.title} layout='fill' objectFit='cover' className='rounded-xl '/>
+            <Image src={imageUrlGenerator(item?.backdrop_path)} alt={item?.title} layout='fill' objectFit='cover' className='rounded-xl ' />
+            <div className="hidden md:block absolute bottom-28 ml-12 text-white text-4xl font-semibold p-2 ">
+              {item?.title}
+              <p className='text-xl font-normal w-1/3'>{item?.overview}</p>
+              <p className='text-xl mt-6 font-normal'>{item?.vote_average.toFixed(1)}</p>
+              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 mr-2 hover:cursor-pointer'>Add to Watch Later</button>
+              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 ml-2'>Add to Favourites</button>
+            </div>
           </div>
         ))}
       </div>
 
       {/* Navigation Buttons for Larger Screens */}
       <div className="hidden md:flex absolute inset-0 justify-between items-center px-2">
-        <button 
-          className="bg-gray-700 hover:bg-gray-600 text-white rounded-full p-2" 
+        <button
+          className="bg-gray-700 hover:bg-gray-600 text-white rounded-full p-2"
           onClick={scrollLeft}
         >
           &lt;
         </button>
-        <button 
-          className="bg-gray-700 hover:bg-gray-600 text-white rounded-full p-2" 
+        <button
+          className="bg-gray-700 hover:bg-gray-600 text-white rounded-full p-2"
           onClick={scrollRight}
         >
           &gt;
@@ -93,4 +100,3 @@ const Carousel = () => {
 
 export default Carousel;
 
-  
