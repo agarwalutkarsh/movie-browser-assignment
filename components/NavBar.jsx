@@ -18,7 +18,7 @@ const NavBar = () => {
 
         <div className="z-50 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
             {/* Logo / Title */}
-            <div className="text-lg font-bold">Movie Browser</div>
+            <div className="text-lg font-medium">Movie Browser</div>
 
             {/* Search Bar */}
             <div className="flex items-center bg-[#0A2A2F] px-3 py-2 rounded-lg w-full max-w-md border-2 border-white">

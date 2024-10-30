@@ -1,5 +1,6 @@
 "use client"
-import React, { createContext, useState } from 'react'
+import { getAllGenres } from '@/ApiService/MoviesApi'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const MainContext = createContext()
 
@@ -9,12 +10,21 @@ const MainContextWrapper = ({children}) => {
     const [search, setSearch] = useState('')
     const [searchList, setSearchList] = useState([])
     const [contextPage, setContextPage] = useState(1)
+    const [genreList, setGenreList] = useState([])
+
+    useEffect(() => {
+        const genre = getAllGenres()
+        genre?.then(resp => {
+            setGenreList(resp?.data?.genres)
+        })
+    }, [])
 
     const state = {
         carouselMovieArr,
         search,
         contextPage,
         searchList,
+        genreList,
         setCarouselMovieArr,
         setSearch,
         setContextPage,

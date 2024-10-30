@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
             <BottomBar />
           </MainContextWrapper>
         </div>
-        {/* {children} */}
       </body>
     </html>
   );

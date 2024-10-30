@@ -9,7 +9,7 @@ const ListingPage = () => {
 
     const [movieList, setMovieList] = useState([])
     const [hasMorePage, setHasMorePage] = useState(true)
-    const [page, setPage] = useState(1)
+    // const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
 
     const mainContext = useContext(MainContext)
@@ -17,7 +17,6 @@ const ListingPage = () => {
     const fetchMovies = (page) => {
         setLoading(true)
         if (mainContext?.search === '') {
-            // setSearchList([])
             const movies = getPopularMovies(page)
             console.log(movies)
             movies?.then(list => {

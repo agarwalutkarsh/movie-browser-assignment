@@ -27,3 +27,17 @@ export const getSearchedMovie = async (searchString, page) => {
         return err.response
     }
 }
+
+export const getAllGenres = async () => {
+    try {
+        const resp = await axios.get(`${BASE_URL}/genre/movie/list`, {
+            params: {
+                api_key: '6de2289d1398b8ca55cf3bbee5832f13',
+                language: 'en-US'
+            }
+        })
+        return resp
+    } catch (err) {
+        return err.response
+    }
+}
