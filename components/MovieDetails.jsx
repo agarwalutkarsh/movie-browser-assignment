@@ -16,7 +16,6 @@ const MovieDetails = () => {
         if (id) {
             const detail = getMovieDetails(id)
             detail?.then(movie => {
-                console.log(movie.data)
                 setMovie({ ...movie?.data })
             })
         }
@@ -52,14 +51,14 @@ const MovieDetails = () => {
                 <div className="ml-8 text-xl font-light my-2 italic hidden md:flex">
                     Genres:
                     {movie?.genres?.map((item) =>
-                        <span className='ml-2 h-max rounded-lg px-2 bg-[#14525E]' key={item?.id}>{item?.name}{item?.name}</span>
+                        <span className='ml-2 h-max rounded-lg px-2 bg-[#14525E]' key={item?.id}>{item?.name}</span>
 
                     )}
                 </div>
                 <div className="ml-8 text-xl font-light my-2 italic md:hidden">
                     Genres:
                     {movie?.genres?.map((item) =>
-                        <p className='ml-2 w-max h-max my-2 md:hidden rounded-lg px-2 bg-[#14525E]' key={item?.id}>{item?.name}{item?.name}</p>
+                        <p className='ml-2 w-max h-max my-2 md:hidden rounded-lg px-2 bg-[#14525E]' key={item?.id}>{item?.name}</p>
                     )}
                 </div>
 
