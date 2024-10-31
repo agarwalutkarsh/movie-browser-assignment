@@ -1,17 +1,25 @@
 "use client"
 import { MainContext } from '@/ContextAPI/MainContext'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import GenreTab from './GenreTab'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import moment from 'moment'
 
 const FilterSidebar = () => {
 
     const mainContext = useContext(MainContext)
+    const [dateError, setDateError] = useState('')
     const router = useRouter()
 
     const searchButtonHandler = () => {
-        console.log(mainContext?.filterObject)
+        const startDate = moment(mainContext?.filterObject?.['primary_release_date.gte'] ?? '')
+        const endDate = moment(mainContext?.filterObject?.['primary_release_date.lte'] ?? '')
+        if (startDate?.isValid() && endDate?.isValid() && !startDate?.isBefore(endDate)) {
+            setDateError('End Date should not be before Start Date')
+            return
+        } else {
+            setDateError('')
+        }
         router?.push('/filteredMovieList')
     }
 
@@ -26,10 +34,13 @@ const FilterSidebar = () => {
         <div className='p-5 w-full'>
             <div className='flex'>
                 <p className='text-left text-5xl mb-4'>Filters</p>
-                <button
-                    className="ml-auto mr-4 w-1/6 mt-4 p-3 bg-[#2A464B] hover:bg-[#14525E] rounded-lg"
-                    onClick={searchButtonHandler}
-                >Search</button>
+                <div className='w-full items-end'>
+                    <button
+                        className="float-right w-1/6 mt-1 p-3 bg-[#2A464B] hover:bg-[#14525E] rounded-lg"
+                        onClick={searchButtonHandler}
+                    >Search</button>
+                    <p className='float-right mt-3 mr-4 text-red-400'>{dateError}</p>
+                </div>
             </div>
             <hr className='my-6' />
             <p className='text-left text-2xl mb-4'>Genres</p>

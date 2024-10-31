@@ -14,6 +14,8 @@ const MainContextWrapper = ({children}) => {
     const [filterObject, setFilterObject] = useState({})
     const [clearFilter, setClearFilter] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
+    const [liked, setLiked] = useState([]) // remove if local storage is used
+    const [watchLater, setWatchLater] = useState([])
 
     const onCloseSidebar = () => {
         setIsOpen(false)
@@ -37,6 +39,8 @@ const MainContextWrapper = ({children}) => {
         filterObject,
         clearFilter,
         isOpen,
+        liked,
+        watchLater,
         setCarouselMovieArr,
         setSearch,
         setContextPage,
@@ -45,7 +49,9 @@ const MainContextWrapper = ({children}) => {
         setClearFilter,
         onCloseSidebar,
         openSidebar,
-        setIsOpen
+        setIsOpen,
+        setLiked,
+        setWatchLater
     }
 
   return (

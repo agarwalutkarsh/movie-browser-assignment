@@ -19,7 +19,7 @@ const NavBar = () => {
 
         <div className="z-30 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
             {/* Logo / Title */}
-            <div className="text-lg font-medium">Movie Browser</div>
+            <Link href='/'><div className="text-lg font-medium">Movie Browser</div></Link>
 
             {/* Search Bar */}
             <div className="flex items-center bg-[#0A2A2F] px-3 py-2 rounded-lg w-full max-w-md border-2 border-white">
@@ -36,12 +36,12 @@ const NavBar = () => {
                 <Link href='/filter'><button className="flex items-center gap-1 hover:text-gray-300" title="Filter" >
                     <FaFilter className="text-xl" />
                 </button></Link>
-                <button className="flex items-center gap-1 hover:text-gray-300" title="Liked">
+                <Link href='/watchlist?type=liked'><button className="flex items-center gap-1 hover:text-gray-300" title="Liked">
                     <FaHeart className="text-xl" />
-                </button>
-                <button className="flex items-center gap-1 hover:text-gray-300" title="Watch Later">
+                </button></Link>
+                <Link href='/watchlist?type=watchlater'><button className="flex items-center gap-1 hover:text-gray-300" title="Watch Later">
                     <FaClock className="text-xl" />
-                </button>
+                </button></Link>
             </div>
         </div>
     )
