@@ -1,11 +1,11 @@
 import Watchlist from '@/components/Watchlist'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const WatchlistPage = () => {
     return (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
             <Watchlist />
-        </div>
+        </Suspense>
     )
 }
 
