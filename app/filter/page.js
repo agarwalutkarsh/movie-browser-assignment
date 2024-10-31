@@ -1,14 +1,23 @@
-import GenreTab from '@/components/GenreTab'
+"use Client"
+
+import FilterSidebar from '@/components/FilterSidebar'
+// import { getMoviesByFilter } from '@/ApiService/MoviesApi'
+
+import MobileFilterPage from '@/components/MobileFilterPage'
 import MobileSearchComp from '@/components/MobileSearchComp'
 import React from 'react'
 
 const FilterPage = () => {
+
+
     return (
         <div className='mt-8'>
-            <MobileSearchComp />
-            <p className='text-md font-medium text-left p-2'>Genres</p>
-            <div className='flex w-full '>
-                <GenreTab />
+            <div className='block md:hidden'>
+                <MobileSearchComp />
+                <MobileFilterPage />
+            </div>
+            <div className='hidden md:block'>
+                <FilterSidebar />
             </div>
         </div>
     )

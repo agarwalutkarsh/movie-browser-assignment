@@ -41,3 +41,20 @@ export const getAllGenres = async () => {
         return err.response
     }
 }
+
+
+export const getMoviesByFilter = async (filterObject, page) => {
+
+    try {
+        const resp = await axios.get(`${BASE_URL}/discover/movie`, {
+            params: {
+                api_key: '6de2289d1398b8ca55cf3bbee5832f13',
+                ...filterObject,
+                page
+            }
+        })
+        return resp
+    } catch (err) {
+        return err.response
+    }
+}

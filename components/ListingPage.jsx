@@ -1,5 +1,5 @@
 "use client"
-import { getPopularMovies, getSearchedMovie } from '@/ApiService/MoviesApi'
+import { getMoviesByFilter, getPopularMovies, getSearchedMovie } from '@/ApiService/MoviesApi'
 // import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import ListingCard from './ListingCard'
@@ -50,7 +50,7 @@ const ListingPage = () => {
                 mainContext.setContextPage((prevPage) => prevPage + 1)
             }
         }
-    };
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
@@ -59,11 +59,11 @@ const ListingPage = () => {
 
     return (
         <>
-            <h1 className=' text-3xl mx-14 font-medium'>{mainContext?.search === '' ? 'Popular Movies' : 'Search Results'}</h1>
+            <h1 className=' text-3xl mx-14 mt-20 font-medium'>{mainContext?.search === '' ? 'Popular Movies' : 'Search Results'}</h1>
             {
                 loading && <p className='text-2xl text-center'>Loading...</p>
             }
-            <div className='mt-20 mb-10 mx-10 grid gap-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 '>
+            <div className='mt-4 mb-10 mx-10 grid gap-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 '>
                 {
                      [...movieList, ...mainContext?.searchList ?? []]?.map((item, index) => {
                         return (

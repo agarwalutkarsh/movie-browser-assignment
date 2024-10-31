@@ -16,19 +16,15 @@ const MobileSearchComp = () => {
 
     return (
         <>
-            <p className='text-md font-medium text-left p-2'>Search</p>
+            <p className='text-left text-2xl mb-4'>Search</p>
             <div className='flex w-full '>
                 <input onChange={(e) => searchHandler(e)} placeholder='Search for movie...' className='bg-[#0A272D] w-full rounded-lg p-4'></input>
             </div>
             {
                 <div className={`${mainContext?.search === '' ? 'hidden' : ''}`}>
-                    <ListingPage />
+                    {mainContext?.search !== '' && <ListingPage />}
                 </div>
             }
-            {/* {
-                mainContext?.search !== '' &&
-                <ListingPage />
-            } */}
         </>
     )
 }

@@ -12,8 +12,8 @@ const ListingCard = ({data}) => {
             <Image className='mt-10 rounded-xl ' width={400} height={100} alt={data?.title} src={imageUrlGenerator(data?.poster_path)} />
             <div className='mt-2'>
                 <p className='text-xl mb-4 font-semibold'>{data?.title}</p>
-                <p className='text-gray-400'>{moment(data?.release_date).format('MMM DD, YYYY')}</p>
-                <p className='text-gray-400'>Rating {data?.vote_average}</p>
+                <p className='text-gray-400 text-sm md:text-base'>Rating {data?.vote_average}</p>
+                <p className='text-gray-400 text-sm md:text-base'>{moment(data?.release_date).format('MMM DD, YYYY')}</p>
             </div>
         </div>
     )

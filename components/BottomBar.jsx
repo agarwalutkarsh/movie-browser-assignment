@@ -29,7 +29,7 @@ const BottomBar = () => {
                     <span className="text-xs font-normal">Watchlist</span>
                 </button>
                 <Link href='/filter'>
-                    <button className="flex flex-col items-center">
+                    <button onClick={resetSearchHandler} className="flex flex-col items-center">
                         <FaSearch className="text-xl" />
                         <span className="text-xs font-normal">Search</span>
                     </button>

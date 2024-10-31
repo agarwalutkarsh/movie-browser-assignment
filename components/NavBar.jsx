@@ -1,6 +1,7 @@
 "use client"
 
 import { MainContext } from '@/ContextAPI/MainContext';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { FaHeart, FaFilter, FaClock } from 'react-icons/fa';
 
@@ -16,7 +17,7 @@ const NavBar = () => {
 
     return (
 
-        <div className="z-50 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
+        <div className="z-30 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-6 justify-between items-center">
             {/* Logo / Title */}
             <div className="text-lg font-medium">Movie Browser</div>
 
@@ -32,9 +33,9 @@ const NavBar = () => {
 
             {/* Icons */}
             <div className="flex gap-5 items-center ml-4">
-                <button className="flex items-center gap-1 hover:text-gray-300" title="Filter">
+                <Link href='/filter'><button className="flex items-center gap-1 hover:text-gray-300" title="Filter" >
                     <FaFilter className="text-xl" />
-                </button>
+                </button></Link>
                 <button className="flex items-center gap-1 hover:text-gray-300" title="Liked">
                     <FaHeart className="text-xl" />
                 </button>

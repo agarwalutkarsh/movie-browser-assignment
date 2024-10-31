@@ -41,18 +41,19 @@ const Carousel = () => {
       carouselRef.current.scrollBy({
         left: -carouselRef.current.offsetWidth,
         behavior: 'smooth',
-      });
+      })
     }
-  };
+  }
 
   const scrollRight = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
         left: carouselRef.current.offsetWidth,
         behavior: 'smooth',
-      });
+      })
     }
-  };
+  }
+
 
   return (
     <div className="relative w-full h-[70vh] overflow-hidden items-center">
@@ -68,12 +69,12 @@ const Carousel = () => {
           >
             {/* Item Content */}
             <Image src={imageUrlGenerator(item?.backdrop_path)} alt={item?.title} layout='fill' objectFit='cover' className='rounded-xl ' />
-            <div className="hidden md:block absolute bottom-28 ml-12 text-white text-4xl font-semibold p-2 ">
+            <div className="hidden md:block absolute bottom-4 ml-12 text-white text-4xl font-semibold p-2 ">
               {item?.title}
-              <p className='text-xl font-normal w-1/3'>{item?.overview}</p>
-              <p className='text-xl mt-6 font-normal'>{item?.vote_average.toFixed(1)}</p>
-              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 mr-2 hover:cursor-pointer'>Add to Watch Later</button>
-              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 ml-2'>Add to Favourites</button>
+              <p className='text-lg font-normal w-1/3'>{item?.overview}</p>
+              <p className='text-base mt-6 font-normal'>{item?.vote_average.toFixed(1)}</p>
+              {/* <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 mr-2 hover:cursor-pointer'>Add to Watch Later</button>
+              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 ml-2'>Add to Favourites</button> */}
             </div>
           </div>
         ))}

@@ -11,6 +11,15 @@ const MainContextWrapper = ({children}) => {
     const [searchList, setSearchList] = useState([])
     const [contextPage, setContextPage] = useState(1)
     const [genreList, setGenreList] = useState([])
+    const [filterObject, setFilterObject] = useState({})
+    const [clearFilter, setClearFilter] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
+
+    const onCloseSidebar = () => {
+        setIsOpen(false)
+    }
+
+    const openSidebar = () => setIsOpen(true)
 
     useEffect(() => {
         const genre = getAllGenres()
@@ -25,10 +34,18 @@ const MainContextWrapper = ({children}) => {
         contextPage,
         searchList,
         genreList,
+        filterObject,
+        clearFilter,
+        isOpen,
         setCarouselMovieArr,
         setSearch,
         setContextPage,
-        setSearchList
+        setSearchList,
+        setFilterObject,
+        setClearFilter,
+        onCloseSidebar,
+        openSidebar,
+        setIsOpen
     }
 
   return (
