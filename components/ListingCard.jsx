@@ -4,6 +4,7 @@ import { MainContext } from '@/ContextAPI/MainContext'
 import { imageUrlGenerator } from '@/HelperFunctions'
 import moment from 'moment'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 import { FaClock, FaHeart } from 'react-icons/fa'
 
@@ -12,6 +13,7 @@ const ListingCard = ({ data }) => {
 
     const [liked, setLiked] = useState(false)
     const [watchedLater, setWatchedLater] = useState(false)
+    const router = useRouter()
 
     const mainContext = useContext(MainContext)
 
@@ -74,11 +76,13 @@ const ListingCard = ({ data }) => {
     }
 
 
-
+    const detailsFunction = (id) => {
+        router?.push(`/moviedetail?id=${id}`)
+    }
 
     return (
         <div className='mx-auto'>
-            <Image className='mt-10 rounded-xl ' width={400} height={100} alt={data?.title} src={imageUrlGenerator(data?.poster_path)} />
+            <Image className='mt-10 rounded-xl ' width={400} height={100} alt={data?.title} src={imageUrlGenerator(data?.poster_path)} onClick={() => detailsFunction(data?.id)} />
             <div className='mt-2'>
                 <p className='text-xl mb-4 font-semibold'>{data?.title}</p>
                 <div className='flex'>

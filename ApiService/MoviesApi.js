@@ -58,3 +58,17 @@ export const getMoviesByFilter = async (filterObject, page) => {
         return err.response
     }
 }
+
+export const getMovieDetails = async (id) => {
+    try {
+        const resp = await axios.get(`${BASE_URL}/movie/${id}`, {
+            params: {
+                api_key: '6de2289d1398b8ca55cf3bbee5832f13',
+                append_to_response: 'credits'
+            }
+        })
+        return resp
+    } catch (err) {
+        return err.response
+    }
+}

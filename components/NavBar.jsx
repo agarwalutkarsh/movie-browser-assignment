@@ -2,13 +2,16 @@
 
 import { MainContext } from '@/ContextAPI/MainContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { FaHeart, FaFilter, FaClock } from 'react-icons/fa';
 
 const NavBar = () => {
     const mainContext = useContext(MainContext)
+    const router = useRouter()
 
     const searchHandler = (e) => {
+        router.push('/')
         const value = e.target.value
         mainContext?.setSearch(value)
         mainContext.setContextPage(1)
