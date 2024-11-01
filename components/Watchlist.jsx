@@ -5,22 +5,26 @@ import React, { Suspense, useEffect, useState } from 'react'
 import ListingCard from './ListingCard'
 
 const Watchlist = () => {
+    // Watchlist for favourite movies and watchlater movies
 
+    // State, Params
     const searchParams = useSearchParams()
     const type = searchParams?.get('type')
     const [movieList, setMovieList] = useState([])
 
 
+    // Getting the list from the local storage
     useEffect(() => {
         if (typeof window !== "undefined") {
-            // Only access localStorage on the client side
             const movieArr = type === 'liked' ? JSON.parse(localStorage.getItem('liked')) || [] : JSON.parse(localStorage.getItem('watchlater')) || []
             setMovieList(movieArr)
         }
     }, [type])
 
     return (
+        // Loader
         <Suspense fallback={<div>Loading...</div>}>
+            {/* Watchlist display */}
             <div>
                 <p className='text-3xl font-normal mt-4'>{type === 'liked' ? 'Liked Movies' : 'Watch Later'}</p>
                 {[...movieList]?.length === 0 && <p className='text-xl text-center mt-20'>Please Add Your {type === 'liked' ? 'Liked Movies' : 'Watch Later'} Here!</p>}

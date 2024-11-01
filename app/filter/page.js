@@ -1,10 +1,10 @@
 "use Client"
 
-import FilterSidebar from '@/components/FilterSidebar'
 // import { getMoviesByFilter } from '@/ApiService/MoviesApi'
 
 import MobileFilterPage from '@/components/MobileFilterPage'
 import MobileSearchComp from '@/components/MobileSearchComp'
+import WebFilters from '@/components/WebFilters'
 import React from 'react'
 
 const FilterPage = () => {
@@ -17,7 +17,7 @@ const FilterPage = () => {
                 <MobileFilterPage />
             </div>
             <div className='hidden md:block'>
-                <FilterSidebar />
+                <WebFilters />
             </div>
         </div>
     )

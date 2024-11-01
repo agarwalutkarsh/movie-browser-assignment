@@ -1,15 +1,14 @@
-// components/Carousel.jsx
 "use client";
 import { MainContext } from '@/ContextAPI/MainContext';
 import { imageUrlGenerator } from '@/HelperFunctions';
 import Image from 'next/image';
 import { useRef, useEffect, useContext, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 
 const Carousel = () => {
   const carouselRef = useRef(null);
 
   const mainContext = useContext(MainContext)
-  const [carouselNumber, setCarouselNumber] = useState(1)
 
   // Auto-scroll function
   useEffect(() => {
@@ -56,7 +55,7 @@ const Carousel = () => {
 
 
   return (
-    <div className="relative w-full h-[70vh] overflow-hidden items-center">
+    <div className="relative w-full h-[30vh] md:h-[70vh] lg:h-[90vh] overflow-hidden items-center">
       {/* Carousel container with hidden scrollbar */}
       <div
         ref={carouselRef}
@@ -65,16 +64,18 @@ const Carousel = () => {
         {[...mainContext?.carouselMovieArr ?? []]?.map((item, index) => (
           <div
             key={index}
-            className="relative flex-shrink-0 w-full snap-center h-full"
+            className="relative flex-shrink-0 w-full snap-center h-full "
           >
             {/* Item Content */}
             <Image src={imageUrlGenerator(item?.backdrop_path)} alt={item?.title} layout='fill' objectFit='cover' className='rounded-xl ' />
-            <div className="hidden md:block absolute bottom-4 ml-12 text-white text-4xl font-semibold p-2 ">
-              {item?.title}
-              <p className='text-lg font-normal w-1/3'>{item?.overview}</p>
-              <p className='text-base mt-6 font-normal'>{item?.vote_average.toFixed(1)}</p>
-              {/* <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 mr-2 hover:cursor-pointer'>Add to Watch Later</button>
-              <button className='text-sm bg-transparent border border-white p-3 rounded-lg w-40 ml-2'>Add to Favourites</button> */}
+            <div className="block absolute bottom-4 ml-12 text-white text-2xl md:text-4xl lg:text-6xl font-semibold p-2 ">
+              <p className='flex'>
+                {item?.title}
+                <span className='text-lg md:text-2xl ml-4 md:mt-2 lg:mt-4 font-normal flex'>
+                  <FaStar className='text-yellow-400 mx-3 mt-1' />{item?.vote_average.toFixed(1)}
+                </span>
+              </p>
+              <p className='hidden md:block text-xl font-normal w-2/3'>{item?.overview}</p>
             </div>
           </div>
         ))}
@@ -96,8 +97,8 @@ const Carousel = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Carousel;
 

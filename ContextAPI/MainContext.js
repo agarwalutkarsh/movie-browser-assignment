@@ -1,11 +1,14 @@
 "use client"
-import { getAllGenres } from '@/ApiService/MoviesApi'
+import { getAllGenres, getPopularMovies } from '@/ApiService/MoviesApi'
 import React, { createContext, useEffect, useState } from 'react'
 
 export const MainContext = createContext()
 
-const MainContextWrapper = ({children}) => {
+const MainContextWrapper = ({ children }) => {
 
+    // Context Api for state management
+
+    // States
     const [carouselMovieArr, setCarouselMovieArr] = useState([])
     const [search, setSearch] = useState('')
     const [searchList, setSearchList] = useState([])
@@ -13,23 +16,22 @@ const MainContextWrapper = ({children}) => {
     const [genreList, setGenreList] = useState([])
     const [filterObject, setFilterObject] = useState({})
     const [clearFilter, setClearFilter] = useState(true)
-    const [isOpen, setIsOpen] = useState(false)
-    const [liked, setLiked] = useState([]) // remove if local storage is used
+    const [liked, setLiked] = useState([])
     const [watchLater, setWatchLater] = useState([])
 
-    const onCloseSidebar = () => {
-        setIsOpen(false)
-    }
-
-    const openSidebar = () => setIsOpen(true)
-
+    // Getting all the genres and carousell movies from on loading of the app
     useEffect(() => {
         const genre = getAllGenres()
+        const carouselMovieArr = getPopularMovies(1)
+        carouselMovieArr?.then((list) => {
+            setCarouselMovieArr([...list?.data?.results?.slice(0, 5)])
+        })
         genre?.then(resp => {
             setGenreList(resp?.data?.genres)
         })
     }, [])
 
+    // Exporting to the application
     const state = {
         carouselMovieArr,
         search,
@@ -38,7 +40,6 @@ const MainContextWrapper = ({children}) => {
         genreList,
         filterObject,
         clearFilter,
-        isOpen,
         liked,
         watchLater,
         setCarouselMovieArr,
@@ -47,18 +48,15 @@ const MainContextWrapper = ({children}) => {
         setSearchList,
         setFilterObject,
         setClearFilter,
-        onCloseSidebar,
-        openSidebar,
-        setIsOpen,
         setLiked,
         setWatchLater
     }
 
-  return (
-    <MainContext.Provider value={{...state}}>
-        {children}
-    </MainContext.Provider>
-  )
+    return (
+        <MainContext.Provider value={{ ...state }}>
+            {children}
+        </MainContext.Provider>
+    )
 }
 
 export default MainContextWrapper

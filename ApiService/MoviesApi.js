@@ -1,7 +1,11 @@
 import { BASE_URL } from "@/Env"
 import axios from "axios"
+import moment from "moment"
+
+// Exporting the api functions
 
 
+// Getting popular movies
 export const getPopularMovies = async (page) => {
     try {
         const resp = await axios.get(`${BASE_URL}/movie/popular?language=en-US&page=${page}`, {
@@ -15,6 +19,23 @@ export const getPopularMovies = async (page) => {
     }
 }
 
+// Getting upcoming movies
+export const getUpcomingMovies = async (page) => {
+    const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD')
+    try {
+        const resp = await axios.get(`${BASE_URL}/discover/movie?&primary_release_date.gte=${tomorrow}&sort_by=primary_release_date.asc&page=${page}`, {
+            params: {
+                api_key: '6de2289d1398b8ca55cf3bbee5832f13'
+            }
+        })
+        return resp
+    } catch (err) {
+        return err.response
+    }
+}
+
+
+// Getting searched movies
 export const getSearchedMovie = async (searchString, page) => {
     try {
         const resp = await axios.get(`${BASE_URL}/search/movie?query=${searchString}&page=${page}`, {
@@ -28,6 +49,7 @@ export const getSearchedMovie = async (searchString, page) => {
     }
 }
 
+// Getting all genres
 export const getAllGenres = async () => {
     try {
         const resp = await axios.get(`${BASE_URL}/genre/movie/list`, {
@@ -43,6 +65,7 @@ export const getAllGenres = async () => {
 }
 
 
+// // Getting filter based movies
 export const getMoviesByFilter = async (filterObject, page) => {
 
     try {
@@ -59,6 +82,7 @@ export const getMoviesByFilter = async (filterObject, page) => {
     }
 }
 
+// Getting movie details
 export const getMovieDetails = async (id) => {
     try {
         const resp = await axios.get(`${BASE_URL}/movie/${id}`, {

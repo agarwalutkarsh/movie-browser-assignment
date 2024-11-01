@@ -7,11 +7,13 @@ import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const MovieDetails = () => {
-
+    // Details page for the movie based on id
+    // States and Params
     const searchParams = useSearchParams()
     const id = searchParams?.get('id')
     const [movie, setMovie] = useState({})
 
+    // Getting movie details
     useEffect(() => {
         if (id) {
             const detail = getMovieDetails(id)
@@ -23,8 +25,10 @@ const MovieDetails = () => {
 
     return (
         <div className=' md:flex'>
+            {/* Backdrop image */}
             <Image alt='Movie Backdrop' fill src={imageUrlGenerator(movie?.backdrop_path)} className='object-cover opacity-20 hidden md:flex' />
             <div className='w-1/3 relative h-[90vh] hidden md:block'>
+                {/* Poster Image */}
                 <Image
                     alt='Movie Poster'
                     src={imageUrlGenerator(movie?.poster_path)}
@@ -40,6 +44,7 @@ const MovieDetails = () => {
                     className='object-cover rounded-xl'
                 />
             </div>
+            {/* Details */}
             <div className='w-full md:w-1/2 items-center' >
                 <p className="ml-8 text-5xl font-normal my-2">{movie?.title}</p>
                 <p className="ml-8 text-xl font-normal my-2 italic w-2/3">Tagline: {movie?.tagline}</p>
@@ -66,13 +71,13 @@ const MovieDetails = () => {
                 <div className="ml-8 text-xl font-light my-2 italic hidden md:flex">
                     Spoken Languages:
                     {movie?.spoken_languages?.map((item) =>
-                        <span className='ml-2 h-max rounded-lg px-2 bg-[#14525E]' key={item?.iso_639_1}>{item?.name}</span>
+                        <span className='ml-2 h-max rounded-lg px-2 bg-[#14525E]' key={item?.iso_639_1}>{item?.english_name}</span>
                     )}
                 </div>
                 <div className="ml-8 md:hidden text-xl font-light my-2 italic">
                     Spoken Languages:
                     {movie?.spoken_languages?.map((item) =>
-                        <p className='ml-2 rounded-lg px-2 h-max w-max bg-[#14525E]' key={item?.iso_639_1}>{item?.name}</p>
+                        <p className='ml-2 rounded-lg px-2 h-max w-max bg-[#14525E]' key={item?.iso_639_1}>{item?.english_name}</p>
                     )}
                 </div>
                 <p className="ml-8 text-xl font-light my-2">Runtime: {movie?.runtime} minutes</p>
