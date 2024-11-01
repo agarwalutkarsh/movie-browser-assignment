@@ -33,12 +33,12 @@ const NavBar = () => {
 
     return (
 
-        <div className="z-30 hidden sm:flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-8 justify-between items-center">
+        <div className="z-30 flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-8 justify-between items-center">
             {/* Title */}
             <Link href='/'><div className="text-xl font-normal">Movie Browser</div></Link>
 
             {/* Search Bar */}
-            <div className="flex items-center bg-[#0A2A2F] px-3 py-2 rounded-lg w-full max-w-md border-2 border-white">
+            <div className="hidden sm:flex items-center bg-[#0A2A2F] px-3 py-2 rounded-lg w-full max-w-md border-2 border-white">
                 <input
                     type="text"
                     placeholder="Search movies..."
@@ -48,7 +48,7 @@ const NavBar = () => {
             </div>
 
             {/* Icons */}
-            <div className="flex gap-5 items-center ml-4">
+            <div className="gap-5 items-center ml-4 hidden sm:flex">
                 <Link href='/filter'><button className="flex items-center gap-1 hover:text-gray-300" title="Filter" >
                     <FaFilter className="text-xl" />
                 </button></Link>

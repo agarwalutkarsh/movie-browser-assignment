@@ -2,7 +2,7 @@
 import { MainContext } from '@/ContextAPI/MainContext';
 import { imageUrlGenerator } from '@/HelperFunctions';
 import Image from 'next/image';
-import { useRef, useEffect, useContext, useState } from 'react';
+import { useRef, useEffect, useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Carousel = () => {
@@ -29,7 +29,6 @@ const Carousel = () => {
         });
       }
     }, 3000); // Adjust the time as needed (3000ms = 3 seconds)
-    console.log(mainContext?.carouselMovieArr)
     // Clear interval on component unmount
     return () => clearInterval(interval);
   }, []);
@@ -43,15 +42,6 @@ const Carousel = () => {
       })
     }
   }
-
-  // const scrollRight = () => {
-  //   if (carouselRef.current) {
-  //     carouselRef.current.scrollBy({
-  //       left: carouselRef.current.offsetWidth,
-  //       behavior: 'smooth',
-  //     })
-  //   }
-  // }
 
   const scrollRight = () => {
     if (carouselRef.current) {
@@ -67,7 +57,7 @@ const Carousel = () => {
 
 
   return (
-    <div className="relative w-full h-[30vh] md:h-[70vh] lg:h-[90vh] overflow-hidden items-center">
+    <div className="relative w-full mt-12 md:mt-0 h-[30vh] md:h-[70vh] lg:h-[90vh] overflow-hidden items-center">
       {/* Carousel container with hidden scrollbar */}
       <div
         ref={carouselRef}

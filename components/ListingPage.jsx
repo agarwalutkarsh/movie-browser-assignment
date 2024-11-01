@@ -65,12 +65,16 @@ const ListingPage = () => {
 
     return (
         <>
-        {/* Tabs */}
+            {/* Tabs */}
             <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} setMovieList={setMovieList} />
             <h1 className=' text-3xl mx-14 mt-20 font-medium'>{mainContext?.search === '' ? `${selectedTab} Movies` : 'Search Results'}</h1>
             {/* Loader */}
             {
                 loading && <p className='text-2xl text-center'>Loading...</p>
+            }
+            {
+                [...movieList, ...upcomingMovies, ...mainContext?.searchList ?? []]?.length === 0 && !loading
+                && <p className='text-xl text-center mt-20'>No Search Results Found!</p>
             }
             {/* Listing Card */}
             <div className='mt-4 mb-10 mx-10 grid gap-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 '>
