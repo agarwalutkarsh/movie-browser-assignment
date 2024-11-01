@@ -1,18 +1,27 @@
 "use client"
 
 import { MainContext } from '@/ContextAPI/MainContext'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ListingPage from './ListingPage'
 
 const MobileSearchComp = () => {
     const mainContext = useContext(MainContext)
+    const [localSearch, setLocalSearch] = useState('')
 
     const searchHandler = (e) => {
         const value = e.target.value
-        mainContext?.setSearch(value)
-        mainContext.setContextPage(1)
-        mainContext.setSearchList([])
+        setLocalSearch(value)
     }
+
+    useEffect(() => {
+        const debounce = setTimeout(() => {
+            mainContext?.setSearch(localSearch)
+            mainContext.setContextPage(1)
+            mainContext.setSearchList([])
+        }, 600)
+
+       return () => clearTimeout(debounce)
+    }, [localSearch])
 
     return (
         <>

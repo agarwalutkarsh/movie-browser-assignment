@@ -82,7 +82,7 @@ const ListingCard = ({ data }) => {
 
     return (
         <div className='mx-auto'>
-            <Image className='mt-10 rounded-xl ' width={400} height={100} alt={data?.title} src={imageUrlGenerator(data?.poster_path)} onClick={() => detailsFunction(data?.id)} />
+            <Image className='mt-10 rounded-xl hover:cursor-pointer' width={400} height={100} alt={data?.title} src={imageUrlGenerator(data?.poster_path)} onClick={() => detailsFunction(data?.id)} />
             <div className='mt-2'>
                 <p className='text-xl mb-4 font-semibold'>{data?.title}</p>
                 <div className='flex'>

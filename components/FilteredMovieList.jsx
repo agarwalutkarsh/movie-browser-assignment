@@ -20,11 +20,12 @@ const FilteredMovieList = () => {
         list?.then((data) => {
             console.log(data?.data?.results)
             setMovieList(prevList => ([...prevList, ...data?.data?.results]))
-            setHasMorePage(data?.total_pages > page)
+            setHasMorePage(data?.data?.total_pages > page)
         }).finally(() => setLoading(false))
     }, [page])
 
     const handleScroll = () => {
+        console.log(hasMorePage)
         if (window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 200) {
             if (!loading && hasMorePage) {
                 setPage((prevPage) => prevPage + 1)
@@ -33,6 +34,7 @@ const FilteredMovieList = () => {
     }
 
     useEffect(() => {
+        console.log('Scroll use effect')
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [loading, hasMorePage])
