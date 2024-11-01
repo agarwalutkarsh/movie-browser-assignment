@@ -36,7 +36,7 @@ const MovieDetails = () => {
                     className='object-cover rounded-xl'
                 />
             </div>
-            <div className='w-full relative h-[50vh]  md:hidden'>
+            <div className='w-full mt-12 relative h-[50vh]  md:hidden'>
                 <Image
                     alt='Movie Poster'
                     src={imageUrlGenerator(movie?.poster_path)}

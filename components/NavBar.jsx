@@ -4,7 +4,7 @@ import { MainContext } from '@/ContextAPI/MainContext';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
-import { FaHeart, FaFilter, FaClock } from 'react-icons/fa';
+import { FaHeart, FaFilter, FaClock, FaHome } from 'react-icons/fa';
 
 const NavBar = () => {
     // Navbar for desktop view
@@ -35,7 +35,7 @@ const NavBar = () => {
 
         <div className="z-30 flex fixed top-0 w-full bg-[#0A272D] text-white py-3 px-8 justify-between items-center">
             {/* Title */}
-            <Link href='/'><div className="text-xl font-normal">Movie Browser</div></Link>
+            <Link href='/'><div className="text-xl flex font-normal"><FaHome className='my-auto mr-3' />Home</div></Link>
 
             {/* Search Bar */}
             <div className="hidden sm:flex items-center bg-[#0A2A2F] px-3 py-2 rounded-lg w-full max-w-md border-2 border-white">
