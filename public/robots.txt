@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /private/
+Allow: /
+Sitemap: https://movie-browser-assignment.vercel.app/sitemap.xml
