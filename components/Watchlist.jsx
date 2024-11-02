@@ -26,7 +26,7 @@ const Watchlist = () => {
         <Suspense fallback={<div>Loading...</div>}>
             {/* Watchlist display */}
             <div>
-                <p className='text-3xl font-normal mt-4'>{type === 'liked' ? 'Liked Movies' : 'Watch Later'}</p>
+                <p className='text-3xl font-normal mt-12'>{type === 'liked' ? 'Liked Movies' : 'Watch Later'}</p>
                 {[...movieList]?.length === 0 && <p className='text-xl text-center mt-20'>Please Add Your {type === 'liked' ? 'Liked Movies' : 'Watch Later'} Here!</p>}
                 <div className='mt-4 mb-10 mx-10 grid gap-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 '>
                     {

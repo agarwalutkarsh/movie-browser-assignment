@@ -2,7 +2,7 @@
 
 The Movie Browsing Web Application helps user to search and explore movies by searching and filtering through some advanced filters. Users can also save movies to the favourite list and watch later. This application is fully responsive with Mobile First design allowing user to enjoy the journey through this application on any device. The data is catered by TMDB API providing large data set and details about movies.
 
-This is the Live [Demo](https://movie-browser-assignment.vercel.app/) for applicaton.
+This is the Live [Demo](https://movie-browser-2024.netlify.app/) for applicaton.
 
 ## Author
 Utkarsh Agarwal
@@ -20,7 +20,7 @@ Utkarsh Agarwal
 3. Axios - Used for handling the TMDB API requests
 4. Moment js - Used for formatting date
 6. React Icons - For High quality icons in the application
-7. Vercel - Used for Deployment of the application 
+7. Netlify - Used for Deployment of the application 
 
 ## Getting Started
 
@@ -50,9 +50,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
